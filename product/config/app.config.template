@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<configuration>
+	<appSettings>
+		<add key="LogFileName" value="@log4net.config.file@"/>
+		<add key="ConnectionKey" value="Store"/>
+	</appSettings>
+	<connectionStrings>
+		<add name="Store"
+			 connectionString="@config.connectionstring@"
+			 providerName="System.Data.SqlClient"/>   		
+	   </connectionStrings>
+	<system.web>
+		<compilation debug="true">
+			<assemblies>
+				<add assembly="System.Transactions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/></assemblies></compilation>
+		<authentication mode="Windows"/>        		
+    </system.web>
+	<system.serviceModel>
+		<services>
+			<service name="RawDataCapture.Tasks.FacilityTasks">							
+				<endpoint binding="mexHttpBinding" contract="RawDataCapture.Tasks.IFacilityTasks" address="mex"/>					
+			</service>
+		</services>
+	</system.serviceModel>
+</configuration>

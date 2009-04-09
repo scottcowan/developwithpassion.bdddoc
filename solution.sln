@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "project", "project.csproj", "{F51634E7-475A-4468-8C95-41E839EAA2E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "developwithpassion.bdddoc", "product\developwithpassion.bdddoc\developwithpassion.bdddoc.csproj", "{77912D98-3AF0-4060-A144-72266075DF8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "developwithpassion.bdddoc.tests", "product\developwithpassion.bdddoc.tests\developwithpassion.bdddoc.tests.csproj", "{B0CEBB4D-4BC1-46D5-83AE-F78FD7330DD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F51634E7-475A-4468-8C95-41E839EAA2E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F51634E7-475A-4468-8C95-41E839EAA2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F51634E7-475A-4468-8C95-41E839EAA2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F51634E7-475A-4468-8C95-41E839EAA2E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77912D98-3AF0-4060-A144-72266075DF8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77912D98-3AF0-4060-A144-72266075DF8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77912D98-3AF0-4060-A144-72266075DF8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77912D98-3AF0-4060-A144-72266075DF8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0CEBB4D-4BC1-46D5-83AE-F78FD7330DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CEBB4D-4BC1-46D5-83AE-F78FD7330DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CEBB4D-4BC1-46D5-83AE-F78FD7330DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CEBB4D-4BC1-46D5-83AE-F78FD7330DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
