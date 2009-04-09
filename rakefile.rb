@@ -34,6 +34,7 @@ task :compile => :init do
   MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => 'solution.sln'
 end
 
+desc 'outputs a compiled version of the program to the artifacts/deploy folder'
 task :deploy => :compile do
   Dir.glob(File.join('product','**','developwithpassion*.exe')).each do|file|
     FileUtils.cp file,File.join('artifacts','deploy')
@@ -47,10 +48,10 @@ task :test, :category_to_exclude, :needs => [:compile] do |t,args|
   runner.execute_tests ["#{Project.name}.tests"]
 end
 
-desc 'run the test report for the project'
+desc 'run the bdddoc test report for the project'
 task :run_test_report => [:test, :deploy] do
- FileUtils.cp develop_with_passion_bdddoc_logo,'artifacts'
- FileUtils.cp develop_with_passion_bdddoc_css,'artifacts'
- sh "#{File.join('artifacts','deploy','developwithpassion.bdddoc.exe')} #{File.join('product','developwithpassion.bdddoc.tests','bin','debug','developwithpassion.bdddoc.tests.dll')} 'ObservationAttribute' #{File.join('artifacts','SpecReport.html')} #{File.join('artifacts','developwithpassion.bdddoc.tests.dll-results.xml')}" 
+ runner = BDDDocRunner.new :bdddoc_folder => File.join('artifacts','deploy'), :logo_jpg => develop_with_passion_bdddoc_logo, :css => develop_with_passion_bdddoc_css
+ runner.run(File.join('product','developwithpassion.bdddoc.tests','bin','debug','developwithpassion.bdddoc.tests.dll'))
 end
+
 

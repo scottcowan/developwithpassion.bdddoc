@@ -164,3 +164,24 @@ class File
   end
 
  end
+
+class BDDDocRunner
+  def initialize(settings)
+    @output_folder = settings.fetch(:output_folder,'artifacts')
+    @observation_attribute = settings.fetch(:observation_attribute,'ObservationAttribute')
+    @bdddoc_folder = settings.fetch(:bdddoc_folder,'build_tools\developwithpassion.bdddoc')
+    @mbunit_test_output_folder = settings.fetch(:mbunit_test_output_folder,'artifacts')
+    @developwithpassion_bdddoc_exe = settings.fetch(:bdddoc_exe,'developwithpassion.bdddoc.exe')
+    @logo_jpg = settings.fetch(:logo_jpg,File.join('build_tools','developwithpassion.bdddoc','developwithpassion.bdddoc-logo.jpg'))
+    @css = settings.fetch(:css,File.join('build_tools','developwithpassion.bdddoc','developwithpassion.bdddoc.css'))
+  end
+
+  def run(test_library)
+    test_file = File.basename(test_library)
+    output_file = "#{File.join(@output_folder,test_file)}.developwithpassion.bdddoc.html"
+    mbunit_test_output_file = "#{File.join(@mbunit_test_output_folder,test_file)}-results.xml"
+    sh "#{File.join(@bdddoc_folder,@developwithpassion_bdddoc_exe)} #{test_library} #{@observation_attribute} #{output_file} #{mbunit_test_output_file}"
+   FileUtils.cp @logo_jpg,@output_folder
+   FileUtils.cp @css,@output_folder
+  end
+end
