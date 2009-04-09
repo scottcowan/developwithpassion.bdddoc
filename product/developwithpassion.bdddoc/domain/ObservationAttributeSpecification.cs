@@ -13,7 +13,7 @@ namespace developwithpassion.bdddoc.domain
             this.observation_attribute_name = observation_attribute_name;
         }
 
-        public bool IsSatisfiedBy(MemberInfo member)
+        public bool is_satisfied_by(MemberInfo member)
         {
             return new List<object>(member.GetCustomAttributes(false))
                 .Exists(attribute => is_an_observation_attribute(attribute.GetType()));

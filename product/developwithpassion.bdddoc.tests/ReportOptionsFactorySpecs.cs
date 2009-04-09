@@ -14,16 +14,21 @@ namespace developwithpassion.bdddoc.tests
     {
         public abstract class concern : observations_for_a_sut_with_a_contract<IReportOptionsFactory, ReportOptionsFactory>
         {
-            static protected IAssemblyRepository assembly_resolver;
-            static protected string[] args;
-            static protected string assembly_name;
-
             context c = () =>
             {
                 assembly_resolver = the_dependency<IAssemblyRepository>();
+                observation_specification_factory = the_dependency<IObservationSpecificationFactory>();
                 assembly_name = "MbUnit.Framework.dll";
                 args = new List<string> {assembly_name, "ObservationAttribute", "output.html","test-result.xml"}.ToArray();
+                observation_specification = an<IObservationSpecification>();
+                observation_specification_factory.Stub(x => x.create_from(Arg<string>.Is.Anything)).Return(observation_specification);
             };
+
+            static protected string assembly_name;
+            static protected IAssemblyRepository assembly_resolver;
+            static protected string[] args;
+            static protected IObservationSpecification observation_specification;
+            static IObservationSpecificationFactory observation_specification_factory;
         }
 
         [Concern(typeof (ReportOptionsFactory))]
@@ -43,6 +48,11 @@ namespace developwithpassion.bdddoc.tests
             {
                 result.assembly_to_scan.should_be_equal_to(Assembly.GetExecutingAssembly());
                 result.observation_specification.should_not_be_null();
+            };
+
+            it should_use_the_observation_specification_factory_to_create_the_observation_specification = () =>
+            {
+                result.observation_specification.should_be_equal_to(observation_specification);
             };
 
             static IReportOptions result;

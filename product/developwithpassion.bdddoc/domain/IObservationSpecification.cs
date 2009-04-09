@@ -4,6 +4,6 @@ namespace developwithpassion.bdddoc.domain
 {
     public interface IObservationSpecification
     {
-        bool IsSatisfiedBy(MemberInfo member);
+        bool is_satisfied_by(MemberInfo member);
     }
 }

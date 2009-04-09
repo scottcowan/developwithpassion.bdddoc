@@ -33,8 +33,8 @@ namespace developwithpassion.bdddoc.tests
 
             it should_be_an_observation_if_it_has_the_specified_named_observation_attribute = () =>
             {
-                sut.IsSatisfiedBy(a_method_that_is_an_observation).should_be_true();
-                sut.IsSatisfiedBy(a_method_that_is_not_an_observation).should_be_false();
+                sut.is_satisfied_by(a_method_that_is_an_observation).should_be_true();
+                sut.is_satisfied_by(a_method_that_is_not_an_observation).should_be_false();
             };
         }
     }

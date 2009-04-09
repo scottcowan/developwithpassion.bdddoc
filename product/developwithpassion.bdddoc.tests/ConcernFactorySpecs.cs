@@ -24,7 +24,7 @@ namespace developwithpassion.bdddoc.tests
             {
                 observation_specification = an<IObservationSpecification>();
                 observations = new ObservationReport(new List<IObservation>());
-                observation_specification.Stub(x => x.IsSatisfiedBy(null)).IgnoreArguments().Return(true);
+                observation_specification.Stub(x => x.is_satisfied_by(null)).IgnoreArguments().Return(true);
             };
 
 
@@ -41,7 +41,7 @@ namespace developwithpassion.bdddoc.tests
 
             it should_have_the_concern_populated_with_all_of_the_observations_satisfied_by_the_specification = () =>
             {
-                result.total_number_of_observations.should_be_equal_to(3);
+                result.total_number_of_observations.should_be_equal_to(4);
             };
         }
     }

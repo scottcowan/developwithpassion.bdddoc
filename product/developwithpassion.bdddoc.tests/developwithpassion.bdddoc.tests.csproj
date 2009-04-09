@@ -75,11 +75,13 @@
     <Compile Include="ConcernReportFactorySpecs.cs" />
     <Compile Include="ConcernReportSpecs.cs" />
     <Compile Include="ConcernSpecs.cs" />
-    <Compile Include="DelegateFieldObservationSpecificationSpecs.cs" />
+    <Compile Include="ItFieldObservationSpecificationSpecs.cs" />
     <Compile Include="EnumerableExtensionsSpecs.cs" />
     <Compile Include="MbUnitReportRepositorySpecs.cs" />
     <Compile Include="ObservationReportSpecs.cs" />
     <Compile Include="ObservationAttributeSpecificationSpecs.cs" />
+    <Compile Include="ObservationSpecificationFactorySpecs.cs" />
+    <Compile Include="OrObservationSpecificationSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportOptionsFactorySpecs.cs" />
     <Compile Include="ReportTasksSpecs.cs" />

@@ -9,15 +9,18 @@ namespace developwithpassion.bdddoc.domain
 
     public class ReportOptionsFactory : IReportOptionsFactory
     {
-        private readonly IAssemblyRepository assembly_resolver;
+        private IAssemblyRepository assembly_resolver;
+        IObservationSpecificationFactory observation_specification_factory;
 
-        public ReportOptionsFactory() : this(new AssemblyRepository())
+
+        public ReportOptionsFactory() : this(new AssemblyRepository(),new ObservationSpecificationFactory())
         {
         }
 
-        public ReportOptionsFactory(IAssemblyRepository assembly_resolver)
+        public ReportOptionsFactory(IAssemblyRepository assembly_resolver, IObservationSpecificationFactory observation_specification_factory)
         {
             this.assembly_resolver = assembly_resolver;
+            this.observation_specification_factory = observation_specification_factory;
         }
 
         public IReportOptions create_from(string[] args)
@@ -27,7 +30,7 @@ namespace developwithpassion.bdddoc.domain
                 return new ReportOptions
                            {
                                assembly_to_scan = assembly_resolver.find_using(args[0]),
-                               observation_specification = new ObservationAttributeSpecification(args[1]),
+                               observation_specification = observation_specification_factory.create_from(args[1]),
                                output_filename = args[2],
                                mbunit_test_report = args[3]
                            };

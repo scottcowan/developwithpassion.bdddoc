@@ -1,31 +1,35 @@
+ using System;
+ using System.Reflection;
  using developwithpassion.bdd.contexts;
  using developwithpassion.bdd.mbunit.standard.observations;
  using developwithpassion.bdddoc.core;
  using developwithpassion.bdddoc.domain;
  using developwithpassion.bdd.mbunit;
  using developwithpassion.bdddoc.tests.utility;
+ using System.Linq;
 
 namespace developwithpassion.bdddoc.tests
  {   
-     public class DelegateFieldObservationSpecificationSpecs
+     public class ItFieldObservationSpecificationSpecs
      {
          public abstract class concern : observations_for_a_sut_with_a_contract<IObservationSpecification,
-                                            DelegateFieldObservationSpecification>
+                                            ItFieldObservationSpecification>
          {
         
          }
 
-         [Concern(typeof(DelegateFieldObservationSpecification))]
+         [Concern(typeof(ItFieldObservationSpecification))]
          public class when_determining_if_a_delegate_field_meets_the_specification : concern
          {
              context c = () =>
              {
-            
+                 member = typeof (when_a_number_is_told_to_subtract_itself_to_another_number).GetMember("should_be_recognized_as_an_observation", BindingFlags.Instance | BindingFlags.NonPublic).First();
+                 provide_a_basic_sut_constructor_argument("it");
              };
 
              because b = () =>
              {
-                sut.IsSatisfiedBy(Method.pointed_at_by()) 
+                 result = sut.is_satisfied_by(member);
              };
 
         
@@ -35,6 +39,7 @@ namespace developwithpassion.bdddoc.tests
              };
 
              static bool result;
+             static MemberInfo member;
          }
      }
  }

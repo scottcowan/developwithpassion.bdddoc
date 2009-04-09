@@ -32,10 +32,8 @@ namespace developwithpassion.bdddoc.domain
 
         static public IEnumerable<MemberInfo> all_members_that_meet(this Type type, IObservationSpecification observation_specification)
         {
-            var method_flags = BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public;
-            var field_flags = BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic;
-            return type.GetMethods(method_flags)
-                .Where(observation_specification.IsSatisfiedBy).Cast<MemberInfo>().Union(type.GetFields(field_flags).Cast<MemberInfo>());
+            var member_flags = BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            return type.GetMembers(member_flags).Where(observation_specification.is_satisfied_by);
         }
 
         static public IEnumerable<IConcernObservation> as_observations(this IEnumerable<MemberInfo> methods, string concern, IObservationReport observations)
