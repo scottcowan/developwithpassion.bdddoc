@@ -105,6 +105,7 @@ class MbUnitRunner
 		@compile_target = items.fetch(:compile_target, 'debug')
 		@category_to_exclude = items.fetch(:category_to_exclude, 'missing')
 		@show_report = items.fetch(:show_report, true)
+    @report_type = items.fetch(:report_type,'XML')
 	end
 	
 	def execute_tests(assemblies)
@@ -117,7 +118,7 @@ class MbUnitRunner
 
   def build_command_line_for(assembly)
 			file = File.expand_path("#{@source_dir}/#{assembly}/bin/#{@compile_target}/#{assembly}.dll")
-      "#{@mbunit_dir}/mbunit.cons.exe #{file} /rt:text /rnf:#{assembly}.dll-results.xml /rf:#{@test_results_dir} #{'/sr' if @show_report} /ec:#{@category_to_exclude}"
+      "#{@mbunit_dir}/mbunit.cons.exe #{file} /rt:#{@report_type} /rnf:#{assembly}.dll-results /rf:#{@test_results_dir} #{'/sr' if @show_report} /ec:#{@category_to_exclude}"
   end
 end
 

@@ -25,12 +25,12 @@ task :init  => :clean do
 end
 
 desc 'compiles the project'
-task :compile do
+task :compile => :init do
   MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => 'solution.sln'
 end
 
 task :deploy => :compile do
-  Dir.glob(File.join('product','**','developwithpassion*.dll')).each do|file|
+  Dir.glob(File.join('product','**','developwithpassion*.exe')).each do|file|
     FileUtils.cp file,File.join('artifacts','deploy')
   end
 end
@@ -38,12 +38,14 @@ end
 desc 'run the tests for the project'
 task :test, :category_to_exclude, :needs => [:compile] do |t,args|
   args.with_defaults(:category_to_exclude => 'SLOW')
-  runner = MbUnitRunner.new :compile_target => COMPILE_TARGET, :category_to_exclude => args.category_to_exclude
+  runner = MbUnitRunner.new :compile_target => COMPILE_TARGET, :category_to_exclude => args.category_to_exclude, :show_report => false
   runner.execute_tests ["#{Project.name}.tests"]
 end
 
-#	<target name="run" depends="package">
-#		<exec program="latestpackage\bdddoc.console.exe"
-#			commandline="assets\NothinButDotNetStore.dll TestAttribute SpecReport.html assets\test.report.xml"/>	
-#	</target>
+desc 'run the test report for the project'
+task :run_test_report => [:test, :deploy] do
+ FileUtils.cp File.join('product','images','developwithpassion.bdddoc-logo.jpg'),'artifacts'
+ FileUtils.cp File.join('product','config','developwithpassion.bdddoc.css'),'artifacts'
+ sh "#{File.join('artifacts','deploy','developwithpassion.bdddoc.exe')} #{File.join('product','developwithpassion.bdddoc.tests','bin','debug','developwithpassion.bdddoc.tests.dll')} 'ObservationAttribute' #{File.join('artifacts','SpecReport.html')} #{File.join('artifacts','developwithpassion.bdddoc.tests.dll-results.xml')}" 
+end
 

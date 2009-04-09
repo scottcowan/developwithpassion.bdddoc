@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using developwithpassion.bdd.contexts;
 using developwithpassion.bdd.mbunit;
 using developwithpassion.bdd.mbunit.standard.observations;
+using developwithpassion.bdddoc.core;
 using developwithpassion.bdddoc.domain;
 
 namespace developwithpassion.bdddoc.tests
@@ -10,6 +11,7 @@ namespace developwithpassion.bdddoc.tests
     {
         public abstract class concern : observations_for_a_sut_without_a_contract<ObservationReport> {}
 
+        [Concern(typeof(ObservationReport))]
         public class when_searching_the_observation_report : concern
         {
             context c = () =>

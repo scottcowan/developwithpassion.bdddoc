@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using developwithpassion.bdd.contexts;
 using developwithpassion.bdd.mbunit;
 using developwithpassion.bdd.mbunit.standard.observations;
+using developwithpassion.bdddoc.core;
 using developwithpassion.bdddoc.domain;
 
 namespace developwithpassion.bdddoc.tests
@@ -11,6 +12,7 @@ namespace developwithpassion.bdddoc.tests
     {
         public class concern : observations_for_a_sut_without_a_contract<MbUnitReportRepository> {}
 
+        [Concern(typeof(MbUnitReportRepository))]
         public class when_using_a_mbunit_test_repository : concern
         {
             because b = () =>
