@@ -14,6 +14,11 @@ CLEAN.include('artifacts','**/bin','**/obj')
 #target folders that can be run from VS
 project_test_dir  = File.join('product',"#{Project.name}.tests",'bin','debug')
 
+
+#special files
+develop_with_passion_bdddoc_logo = File.join('product','images','developwithpassion.bdddoc-logo.jpg')
+develop_with_passion_bdddoc_css = File.join('product','config','developwithpassion.bdddoc.css')
+
 output_folders = [project_test_dir]
 
 task :default => [:full_test]
@@ -44,8 +49,8 @@ end
 
 desc 'run the test report for the project'
 task :run_test_report => [:test, :deploy] do
- FileUtils.cp File.join('product','images','developwithpassion.bdddoc-logo.jpg'),'artifacts'
- FileUtils.cp File.join('product','config','developwithpassion.bdddoc.css'),'artifacts'
+ FileUtils.cp develop_with_passion_bdddoc_logo,'artifacts'
+ FileUtils.cp develop_with_passion_bdddoc_css,'artifacts'
  sh "#{File.join('artifacts','deploy','developwithpassion.bdddoc.exe')} #{File.join('product','developwithpassion.bdddoc.tests','bin','debug','developwithpassion.bdddoc.tests.dll')} 'ObservationAttribute' #{File.join('artifacts','SpecReport.html')} #{File.join('artifacts','developwithpassion.bdddoc.tests.dll-results.xml')}" 
 end
 

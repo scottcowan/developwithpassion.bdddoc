@@ -7,11 +7,12 @@ http://rubyforge.org/frs/download.php/29263/ruby186-26.exe
 
 *****All build activities are to be done with a command prompt that is pointing at the root folder******
 
-To Test: build test
+To run the tests: build test
 
-To Deploy: build deploy_assembly (output will go to the build\deploy folder)
+To deploy: build deploy (output will go to the artifacts\deploy)
 
-To Open The Solutions: open (you don't have to use this, but if you do it will ensure that the TestDriven.Net runner uses the version
-                             of MBUnit that lives in this project).
+To open the solution: open 
+
+To run the bdddoc test report for the project itself (report output will go to artifacts\SpecReport.html): build run_test_report
 
 
