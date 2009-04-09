@@ -169,11 +169,11 @@ class BDDDocRunner
   def initialize(settings)
     @output_folder = settings.fetch(:output_folder,'artifacts')
     @observation_attribute = settings.fetch(:observation_attribute,'ObservationAttribute')
-    @bdddoc_folder = settings.fetch(:bdddoc_folder,'build_tools\developwithpassion.bdddoc')
+    @bdddoc_folder = settings.fetch(:bdddoc_folder,File.join('thirdparty','developwithpassion.bdddoc'))
     @mbunit_test_output_folder = settings.fetch(:mbunit_test_output_folder,'artifacts')
     @developwithpassion_bdddoc_exe = settings.fetch(:bdddoc_exe,'developwithpassion.bdddoc.exe')
-    @logo_jpg = settings.fetch(:logo_jpg,File.join('build_tools','developwithpassion.bdddoc','developwithpassion.bdddoc-logo.jpg'))
-    @css = settings.fetch(:css,File.join('build_tools','developwithpassion.bdddoc','developwithpassion.bdddoc.css'))
+    @logo_jpg = settings.fetch(:logo_jpg,File.join(@bdddoc_folder,'developwithpassion.bdddoc-logo.jpg'))
+    @css = settings.fetch(:css,File.join(@bdddoc_folder,'developwithpassion.bdddoc.css'))
   end
 
   def run(test_library)

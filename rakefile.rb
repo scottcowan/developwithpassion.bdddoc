@@ -15,7 +15,9 @@ CLEAN.include('artifacts','**/bin','**/obj')
 project_test_dir  = File.join('product',"#{Project.name}.tests",'bin','debug')
 
 
-#special files
+deploy_dir = File.join('artifacts','deploy')
+
+#files to deploy
 develop_with_passion_bdddoc_logo = File.join('product','images','developwithpassion.bdddoc-logo.jpg')
 develop_with_passion_bdddoc_css = File.join('product','config','developwithpassion.bdddoc.css')
 
@@ -39,6 +41,8 @@ task :deploy => :compile do
   Dir.glob(File.join('product','**','developwithpassion*.exe')).each do|file|
     FileUtils.cp file,File.join('artifacts','deploy')
   end
+  FileUtils.cp develop_with_passion_bdddoc_logo, deploy_dir
+  FileUtils.cp develop_with_passion_bdddoc_css, deploy_dir
 end
 
 desc 'run the tests for the project'
@@ -50,7 +54,7 @@ end
 
 desc 'run the bdddoc test report for the project'
 task :run_test_report => [:test, :deploy] do
- runner = BDDDocRunner.new :bdddoc_folder => File.join('artifacts','deploy'), :logo_jpg => develop_with_passion_bdddoc_logo, :css => develop_with_passion_bdddoc_css
+ runner = BDDDocRunner.new :bdddoc_folder => File.join('artifacts','deploy')
  runner.run(File.join('product','developwithpassion.bdddoc.tests','bin','debug','developwithpassion.bdddoc.tests.dll'))
 end
 
