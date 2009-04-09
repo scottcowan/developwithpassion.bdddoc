@@ -13,6 +13,6 @@ To deploy: build deploy (output will go to the artifacts\deploy)
 
 To open the solution: open 
 
-To run the bdddoc test report for the project itself (report output will go to artifacts\SpecReport.html): build run_test_report
+To run the bdddoc test report for the project itself (report output will go to artifacts\developwithpassion.bdd.tests.developwithpassion.bdddoc.html): build run_test_report
 
 
