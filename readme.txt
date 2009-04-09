@@ -1,4 +1,4 @@
-Before you try to run any of the build tasks (only test and deploy are really applicable for this project) make sure
+Before you try to run any of the build tasks make sure
 you have ruby installed on your local machine. I would recommend running the ruby one click installer, unless you are
 already familiar with setting up ruby on your local machine. You can download the one click installer from the following location:
 
