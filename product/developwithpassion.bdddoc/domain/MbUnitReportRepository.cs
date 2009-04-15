@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using developwithpassion.bdddoc.utility;
 
@@ -83,12 +84,17 @@ namespace developwithpassion.bdddoc.domain
                 return descendants.for_each<XElement, IObservation>(
                     x => new ObservationResult
                          {
-                             name = x.Attribute("name").Value.Replace(".tear_down", "").Replace(".setup", ""),
+                             name = strip_nested_class_name_from( x.Attribute("name").Value.Replace(".tear_down", "").Replace(".setup", "") ),
                              success = x.Attribute("result").Value == "success"
                          });
             }
             Console.WriteLine("couldn't find " + report_file);
             return new List<IObservation> {new ObservationResult()};
+        }
+
+        private string strip_nested_class_name_from( string observation )
+        {
+            return observation.Split('+').Last();
         }
     }
 }
