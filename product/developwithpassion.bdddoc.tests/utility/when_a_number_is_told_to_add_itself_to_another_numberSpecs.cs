@@ -5,7 +5,7 @@ using developwithpassion.bdddoc.core;
 
 namespace developwithpassion.bdddoc.tests.utility
 {
-    [Concern(typeof (int))]
+    [Concern(typeof (int),"sample story")]
     public class when_a_number_is_told_to_add_itself_to_another_number
     {
         [Observation]

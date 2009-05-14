@@ -1,0 +1,35 @@
+<html>
+	<body>
+	#if($Story.story_key == '')
+	<h1>Story:  No story specified</h1>
+	#else
+	<h1>Story:  ${Story.story_key}</h1>
+	#end
+	
+	#foreach($group in $Story.groups)
+	<ul>
+		<li>
+			<h2>$group.concerned_with</h2>
+			<ul>
+			#foreach($concern in $group.concerns)			
+				<li>
+					<h3>$concern.name</h3>
+					<ul>
+					#foreach($observation in $concern.observations)				
+						<li>
+						#if($observation.success)
+							<div style='color:green'>$observation.name</div>
+						#else
+							<div style='color:red'>$observation.name</div>
+						#end
+						</li>
+					#end
+					</ul>
+				</li>
+			#end
+			</ul>			
+		</li>
+	</ul>
+	#end
+	</body>
+</html>

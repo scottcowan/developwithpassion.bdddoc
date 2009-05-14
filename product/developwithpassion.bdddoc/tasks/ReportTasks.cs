@@ -19,7 +19,7 @@ namespace developwithpassion.bdddoc.tasks
         private readonly IReportWriter report_writer;
         public static readonly string help_message = string.Format("usage: {0} [assembly_filename] [test_attribute_name] [report_output_filename] [mbunit_xml_report]", Assembly.GetExecutingAssembly().GetName().Name);
 
-        public ReportTasks() : this(Console.Out, new ReportOptionsFactory(), new ConcernReportFactory(), new MbUnitReportFactory(), new SimpleHtmlReportWriter())
+        public ReportTasks() : this(Console.Out, new ReportOptionsFactory(), new ConcernReportFactory(), new MbUnitReportFactory(), new SeperatedStoryReportWriter())
         {
         }
 

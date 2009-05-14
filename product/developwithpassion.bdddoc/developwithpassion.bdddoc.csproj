@@ -31,6 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Commons, Version=0.4.2.8580, Culture=neutral, PublicKeyToken=44382d1b57473eda">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\nvelocity\Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.0.30714, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\nvelocity\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NVelocity, Version=0.4.2.8580, Culture=neutral, PublicKeyToken=44382d1b57473eda">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\nvelocity\NVelocity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -54,6 +66,8 @@
     <Compile Include="domain\StoryReport.cs" />
     <Compile Include="domain\StoryReportExtensions.cs" />
     <Compile Include="domain\StoryRepository.cs" />
+    <Compile Include="tasks\SeperatedStoryReportWriter.cs" />
+    <Compile Include="tasks\TemplateService.cs" />
     <Compile Include="tasks\SimpleHtmlReportWriter.cs" />
     <Compile Include="domain\AssemblyRepository.cs" />
     <Compile Include="domain\BDDNamingStyleExtensions.cs" />
@@ -74,6 +88,14 @@
     <Compile Include="domain\Concern.cs" />
     <Compile Include="core\ConcernAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="seperated-index.vm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="seperated.vm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,6 +41,9 @@ task :deploy => :compile do
   Dir.glob(File.join('product','**','developwithpassion*.exe')).each do|file|
     FileUtils.cp file,File.join('artifacts','deploy')
   end
+  Dir.glob(File.join('product','**','*.vm')).each do|file|
+    FileUtils.cp file,File.join('artifacts','deploy')
+  end
   FileUtils.cp develop_with_passion_bdddoc_logo, deploy_dir
   FileUtils.cp develop_with_passion_bdddoc_css, deploy_dir
 end
