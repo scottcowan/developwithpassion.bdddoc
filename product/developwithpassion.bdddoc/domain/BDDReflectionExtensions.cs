@@ -19,10 +19,10 @@ namespace developwithpassion.bdddoc.domain
             return concern_attributes != null && concern_attributes.Length == 1;
         }
 
-        static public Type concern(this Type type)
+        static public IConcernAttribute concern(this Type type)
         {
             var concern_attributes = type.GetCustomAttributes(typeof (ConcernAttribute), false);
-            return ((ConcernAttribute) concern_attributes[0]).concerned_with;
+            return (ConcernAttribute) concern_attributes[0];
         }
 
         static public IConcernObservation as_observation(this MemberInfo method, string concern, IObservationReport observations)

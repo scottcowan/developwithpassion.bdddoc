@@ -7,7 +7,8 @@ namespace developwithpassion.bdddoc.domain
 {
     public interface IConcernGroup : ITypeForAConcern, IGroupingOfConcerns
     {
-        IEnumerable<IConcern> concerns { get; }
+        IEnumerable<IConcern> concerns { get; set; }
+        string story_key { get; }
     }
 
     public class ConcernGroup : IConcernGroup
@@ -23,11 +24,17 @@ namespace developwithpassion.bdddoc.domain
         public IEnumerable<IConcern> concerns
         {
             get { return all_concerns.one_at_a_time(); }
+            set { all_concerns = value; }
         }
 
         public Type concerned_with
         {
             get { return all_concerns.First().concerned_with; }
+        }
+
+        public string story_key
+        {
+            get { return all_concerns.First().story_key; }
         }
 
         public int total_number_of_concerns

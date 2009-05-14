@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\thirdparty\developwithpassion.commons\developwithpassion.commons.core.infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="FizzWare.NBuilder, Version=2.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\nbuilder\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="MbUnit.Framework, Version=2.4.2.130, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\thirdparty\mbunit\MbUnit.Framework.dll</HintPath>
@@ -69,7 +73,7 @@
     <Compile Include="BDDReflectionExtensionsSpecs.cs" />
     <Compile Include="BDDStyleNameSpecs.cs" />
     <Compile Include="ConcernFactorySpecs.cs" />
-    <Compile Include="ConcernGroupRepositorySpecs.cs" />
+    <Compile Include="StoryRepositorySpecs.cs" />
     <Compile Include="ConcernGroupSpecs.cs" />
     <Compile Include="ConcernObservationSpecs.cs" />
     <Compile Include="ConcernReportFactorySpecs.cs" />

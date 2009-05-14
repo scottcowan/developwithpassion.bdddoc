@@ -12,12 +12,12 @@ namespace developwithpassion.bdddoc.tests
     {
         public abstract class concern : observations_for_a_sut_with_a_contract<IConcernReport, ConcernReport>
         {
-            static protected List<IConcernGroup> concern_groups_in_report;
+            static protected List<IStoryReport> concern_groups_in_report;
 
             context c = () =>
             {
-                concern_groups_in_report = new List<IConcernGroup>();
-                provide_a_basic_sut_constructor_argument<IEnumerable<IConcernGroup>>(concern_groups_in_report);
+                concern_groups_in_report = new List<IStoryReport>();
+                provide_a_basic_sut_constructor_argument<IEnumerable<IStoryReport>>(concern_groups_in_report);
             };
         }
 
@@ -26,8 +26,8 @@ namespace developwithpassion.bdddoc.tests
         {
             context c = () =>
             {
-                first_concern_group = an<IConcernGroup>();
-                second_concern_group = an<IConcernGroup>();
+                first_concern_group = an<IStoryReport>();
+                second_concern_group = an<IStoryReport>();
 
                 first_concern_group.Stub(x => x.total_number_of_concerns).Return(15);
                 second_concern_group.Stub(x => x.total_number_of_concerns).Return(5);
@@ -46,9 +46,9 @@ namespace developwithpassion.bdddoc.tests
                 total_number_of_concerns.should_be_equal_to(20);
             };
 
-            static IConcernGroup first_concern_group;
+            static IStoryReport first_concern_group;
             static int total_number_of_concerns;
-            static IConcernGroup second_concern_group;
+            static IStoryReport second_concern_group;
         }
 
         [Concern(typeof (ConcernReport))]
@@ -56,8 +56,10 @@ namespace developwithpassion.bdddoc.tests
         {
             context c = () =>
             {
-                first_concern_group = an<IConcernGroup>();
-                second_concern_group = an<IConcernGroup>();
+                first_concern_group = an<IStoryReport>();
+                second_concern_group = an<IStoryReport>();
+
+                
 
                 first_concern_group.Stub(x => x.total_number_of_observations).Return(15);
                 second_concern_group.Stub(x => x.total_number_of_observations).Return(20);
@@ -76,9 +78,9 @@ namespace developwithpassion.bdddoc.tests
                 total_number_of_observations.should_be_equal_to(35);
             };
 
-            static IConcernGroup first_concern_group;
+            static IStoryReport first_concern_group;
             static int total_number_of_observations;
-            static IConcernGroup second_concern_group;
+            static IStoryReport second_concern_group;
         }
     }
 }

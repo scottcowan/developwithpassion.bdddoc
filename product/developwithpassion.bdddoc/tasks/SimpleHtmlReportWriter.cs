@@ -53,7 +53,9 @@ namespace developwithpassion.bdddoc.tasks
             builder.AppendFormat("<img src=\"{0}\" />",logo_filename);
             builder.Append(build_report_header_block_using(report));
             builder.AppendFormat("<ul class=\"behaviour\">");
-            report.groups.OrderBy(x => x.concerned_with.Name).each(rg => builder.Append(build_behaviour_block_using(rg)));
+            report.stories.all_concern_groups()
+                .OrderBy(x => x.concerned_with.ToString())
+                .each(rg => builder.Append(build_behaviour_block_using(rg)));
             builder.AppendFormat("</ul>");
             builder.Append("</body></html>");
 

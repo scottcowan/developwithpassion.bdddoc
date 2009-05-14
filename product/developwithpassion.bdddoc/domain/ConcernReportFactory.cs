@@ -7,20 +7,20 @@ namespace developwithpassion.bdddoc.domain
 
     public class ConcernReportFactory : IConcernReportFactory
     {
-        private readonly IConcernGroupRepository concern_group_repository;
+        private readonly IStoryRepository StoryRepository;
 
-        public ConcernReportFactory() : this(new ConcernGroupRepository())
+        public ConcernReportFactory() : this(new StoryRepository())
         {
         }
 
-        public ConcernReportFactory(IConcernGroupRepository concern_group_repository)
+        public ConcernReportFactory(IStoryRepository StoryRepository)
         {
-            this.concern_group_repository = concern_group_repository;
+            this.StoryRepository = StoryRepository;
         }
 
         public IConcernReport create_using(IReportOptions options, IObservationReport observations)
         {
-            return new ConcernReport(concern_group_repository.all_concern_groups_found_using(options,observations));
+            return new ConcernReport(StoryRepository.all_concern_groups_found_using(options,observations));
         }
     }
 }

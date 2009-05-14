@@ -25,8 +25,7 @@ namespace developwithpassion.bdddoc.domain
 
         public IReportOptions create_from(string[] args)
         {
-            try
-            {
+            if(args.Length == 4)
                 return new ReportOptions
                            {
                                assembly_to_scan = assembly_resolver.find_using(args[0]),
@@ -34,11 +33,14 @@ namespace developwithpassion.bdddoc.domain
                                output_filename = args[2],
                                mbunit_test_report = args[3]
                            };
-            }
-            catch (Exception)
-            {
-                return new MissingReportOptions();
-            }
+            if(args.Length == 3)
+                return new ReportOptions
+                           {
+                               assembly_to_scan = assembly_resolver.find_using(args[0]),
+                               observation_specification = observation_specification_factory.create_from(args[1]),
+                               output_filename = args[2]
+                           };
+            return new MissingReportOptions();
         }
     }
 }

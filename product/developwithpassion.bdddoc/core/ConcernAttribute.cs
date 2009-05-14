@@ -3,7 +3,7 @@ using System;
 namespace developwithpassion.bdddoc.core
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class ConcernAttribute : Attribute
+    public class ConcernAttribute : Attribute, IConcernAttribute
     {
         public string story_key { get; private set; }
         public Type concerned_with { get; private set; }

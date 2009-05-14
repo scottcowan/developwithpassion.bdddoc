@@ -18,6 +18,7 @@ namespace developwithpassion.bdddoc.tests
 
                 provide_a_basic_sut_constructor_argument(typeof (int));
                 provide_a_basic_sut_constructor_argument(new BDDStyleName("when_looking_for_a_certain_number"));
+                provide_a_basic_sut_constructor_argument("story");
                 provide_a_basic_sut_constructor_argument<IEnumerable<IConcernObservation>>(observations);
             };
 

@@ -42,17 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="console\BootStrap.cs" />
+    <Compile Include="core\IConcernAttribute.cs" />
+    <Compile Include="domain\ArgumentsFactory.cs" />
     <Compile Include="domain\IObservationSpecificationFactory.cs" />
     <Compile Include="domain\ItFieldObservationSpecification.cs" />
     <Compile Include="domain\IObservationSpecification.cs" />
     <Compile Include="domain\MbUnitReportRepository.cs" />
     <Compile Include="domain\ObservationSpecificationFactory.cs" />
     <Compile Include="domain\OrObservationSpecification.cs" />
+    <Compile Include="domain\StoryFactory.cs" />
+    <Compile Include="domain\StoryReport.cs" />
+    <Compile Include="domain\StoryReportExtensions.cs" />
+    <Compile Include="domain\StoryRepository.cs" />
     <Compile Include="tasks\SimpleHtmlReportWriter.cs" />
     <Compile Include="domain\AssemblyRepository.cs" />
     <Compile Include="domain\BDDNamingStyleExtensions.cs" />
     <Compile Include="domain\ConcernFactory.cs" />
-    <Compile Include="domain\ConcernGroupRepository.cs" />
     <Compile Include="domain\ConcernReport.cs" />
     <Compile Include="domain\ConcernReportFactory.cs" />
     <Compile Include="tasks\ReportTasks.cs" />

@@ -15,14 +15,14 @@ namespace developwithpassion.bdddoc.tests
         {
             context c = () =>
             {
-                concern_group_repository = the_dependency<IConcernGroupRepository>();
+                StoryRepository = the_dependency<IStoryRepository>();
                 observations = an<IObservationReport>();
-                concern_groups = new List<IConcernGroup>();
+                stories = new List<IStoryReport>();
                 options = an<IReportOptions>();
             };
 
-            static protected List<IConcernGroup> concern_groups;
-            static protected IConcernGroupRepository concern_group_repository;
+            static protected List<IStoryReport> stories;
+            static protected IStoryRepository StoryRepository;
             static protected IConcernReport report;
             static protected IReportOptions options;
             static protected IObservationReport observations;
@@ -33,9 +33,13 @@ namespace developwithpassion.bdddoc.tests
         {
             context c = () =>
             {
-                concern_groups.Add(an<IConcernGroup>());
-                concern_groups.Add(an<IConcernGroup>());
-                concern_group_repository.Stub(x => x.all_concern_groups_found_using(options, observations)).Return(concern_groups);
+                var story = new StoryReport(new[]
+                                                {
+                                                    an<IConcernGroup>(),
+                                                    an<IConcernGroup>()
+                                                });
+                stories.Add(story);
+                StoryRepository.Stub(x => x.all_concern_groups_found_using(options, observations)).Return(stories);
             };
 
             because b = () =>
@@ -46,7 +50,7 @@ namespace developwithpassion.bdddoc.tests
 
             it should_create_a_report_that_consists_of_all_the_concern_groups_found_by_the_repository = () =>
             {
-                report.groups.Count().should_be_equal_to(2);
+                report.total_number_of_groups.should_be_equal_to(2);
             };
         }
     }

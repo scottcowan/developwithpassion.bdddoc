@@ -11,7 +11,8 @@ namespace developwithpassion.bdddoc.domain
     {
         public IConcern create_concern_from(Type type_with_concern, IObservationSpecification obseration_specification, IObservationReport observations)
         {
-            return new Concern(type_with_concern.concern(),
+            return new Concern(type_with_concern.concern().concerned_with,
+                                type_with_concern.concern().story_key,
                                type_with_concern.Name.as_bdd_style_name(),
                                type_with_concern.all_members_that_meet(obseration_specification).as_observations(type_with_concern.Name,observations)                               
                                );
